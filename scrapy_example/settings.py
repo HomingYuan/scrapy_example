@@ -64,9 +64,15 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapy_example.pipelines.SomePipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scrapy_example.pipelines.DmozPipeline': 300,
+}
+
+MYSQL_HOST = "127.0.0.1"
+MYSQL_PORT = 3306
+MYSQL_DB = "test"
+MYSQL_USER = "laimingxing"
+MYSQL_PASSWORD = "laimingxing"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

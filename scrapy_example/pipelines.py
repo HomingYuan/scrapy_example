@@ -4,8 +4,27 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
+import  pymysql
 
 
-class ScrapyExamplePipeline(object):
+from scrapy_example import settings
+
+
+class DmozPipeline(object):
+
+    def __init__(self):
+        self.connection = pymysql.connect(host=settings.MYSQL_HOST,
+                port=settings.MYSQL_PORT,
+                user=settings.MYSQL_USER,
+                passwd=settings.MYSQL_PASSWORD,
+                db=settings.MYSQL_DB)
+
+    def close_spider(self, spider):
+        if hasattr(self, 'connection'):
+            self.connection.close()
+
     def process_item(self, item, spider):
-        return item
+        with self.connection as cur:
+            #create table resources(id int auto_increment primary key, title varchar(100), link varchar(100), `desc` blob)engine=innodb;
+            sql = """insert into resources(`title`, `link`, `desc`) values("{0}", "{1}", "{2}")""".format(item['title'], item['link'], item['desc'])
+            cur.execute(sql)
