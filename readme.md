@@ -17,3 +17,7 @@ scrapy的使用方式：
     create table resources(id int auto_increment primary key, title varchar(100), link varchar(100), `desc` blob)engine=innodb;
 
 然后，在settings.py中，进行简单的配置，并在pipeline.py中实现相应的逻辑。
+
+存放豆瓣图书的建表语句：
+
+    create table douban_books(`id` int auto_increment primary key, `title` blob, `link` varchar(100), `desc` blob, `detail` blob)engine=innodb;

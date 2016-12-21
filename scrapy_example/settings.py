@@ -64,9 +64,9 @@ DEFAULT_REQUEST_HEADERS = {
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapy_example.pipelines.DmozPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scrapy_example.pipelines.DoubanBPipeline': 300,
+}
 
 MYSQL_HOST = "127.0.0.1"
 MYSQL_PORT = 3306

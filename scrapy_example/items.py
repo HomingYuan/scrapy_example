@@ -20,3 +20,10 @@ class DoubanMItem(scrapy.Item):
     image_url = scrapy.Field()
     rank = scrapy.Field()
     detail = scrapy.Field()
+
+
+class DoubanBItem(scrapy.Item):
+    link   = scrapy.Field()
+    title  = scrapy.Field()
+    detail = scrapy.Field()
+    desc   = scrapy.Field()
